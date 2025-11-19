@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMO-INTEL – Mood History</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --unair-blue: #003A70;
+      --unair-yellow: #FFC300;
+      --bg-soft: #F5F7FA;
+      --white: #FFFFFF;
+      --border: #E5E7EB;
+      --text-muted: #6B7280;
+      --text-dark: #1F2937;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg-soft);
+      padding: 22px 18px 36px;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 26px;
+      animation: fadeIn .6s ease;
+    }
+    .header h2 {
+      font-family: "Poppins";
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--unair-blue);
+    }
+    .header p {
+      margin-top: 6px;
+      font-size: .9rem;
+      color: var(--text-muted);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      margin-top: 10px;
+    }
+
+    /* Vertical line */
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: #D0D7E2;
+      border-radius: 999px;
+    }
+
+    /* ENTRY */
+    .entry {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 26px;
+      animation: fadeUp .45s ease;
+    }
+
+    .dot {
+      width: 20px;
+      height: 20px;
+      background: var(--unair-blue);
+      border-radius: 50%;
+      margin-top: 4px;
+      box-shadow: 0 0 0 4px rgba(0,58,112,0.15);
+      flex-shrink: 0;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--white);
+      padding: 16px 18px;
+      border-radius: 18px;
+      width: 100%;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .date {
+      font-family: "Poppins";
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--unair-blue);
+    }
+
+    .time {
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    .mood-row {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .mood-label {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .mood-icon {
+      font-size: 1.4rem;
+    }
+
+    .info-row {
+      margin-top: 8px;
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      margin-top: 26px;
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h2>Mood History</h2>
+    <p>Your emotional records over time</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+
+    <!-- ENTRY 1 -->
+    <div class="entry">
+      <div class="dot"></div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="date">Today</span>
+          <span class="time">08:42</span>
+        </div>
+
+        <div class="mood-row">
+          <span class="mood-label">😊 Good</span>
+          <span class="mood-icon">😊</span>
+        </div>
+
+        <div class="info-row">
+          Intensity: 3/5<br>
+          Readiness: High<br>
+          Trigger: Workload
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTRY 2 -->
+    <div class="entry">
+      <div class="dot"></div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="date">Yesterday</span>
+          <span class="time">09:15</span>
+        </div>
+
+        <div class="mood-row">
+          <span class="mood-label">😐 Neutral</span>
+          <span class="mood-icon">😐</span>
+        </div>
+
+        <div class="info-row">
+          Intensity: 2/5<br>
+          Readiness: Medium<br>
+          Trigger: Lack of Rest
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTRY 3 -->
+    <div class="entry">
+      <div class="dot"></div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="date">Mon, 17 Feb</span>
+          <span class="time">10:20</span>
+        </div>
+
+        <div class="mood-row">
+          <span class="mood-label">😔 Low</span>
+          <span class="mood-icon">😔</span>
+        </div>
+
+        <div class="info-row">
+          Intensity: 4/5<br>
+          Readiness: Low<br>
+          Trigger: Personal Problems
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2025 EMO-INTEL · Universitas Airlangga
+  </div>
+
+</body>
+</html>

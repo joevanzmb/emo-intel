@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMO-INTEL – Mood Questionnaire</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* COLOR SYSTEM */
+:root {
+  --blue: #003A70;
+  --yellow: #FFC300;
+  --bg: #F4F6FA;
+  --white: #FFFFFF;
+  --muted: #6B7280;
+  --border: #E3E6EB;
+  --tile-bg: #FAFAFA;
+}
+
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  padding: 22px 18px 40px;
+  min-height: 100vh;
+}
+
+/* PROGRESS BAR */
+.progress {
+  width: 100%;
+  height: 6px;
+  background: #D7DCE2;
+  border-radius: 20px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.progress-fill {
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), #00519B);
+  border-radius: 20px;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.header-icon {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+}
+.header h2 {
+  font-family: "Poppins";
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+.header p {
+  margin-top: 6px;
+  font-size: .88rem;
+  color: var(--muted);
+}
+
+/* QUESTION CARD */
+.card {
+  background: var(--white);
+  border: 1px solid #ebebeb;
+  border-radius: 22px;
+  padding: 22px 18px 24px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.question-title {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+
+/* OPTION TILE */
+.option {
+  margin-bottom: 12px;
+}
+.option input {
+  display: none;
+}
+.option-tile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--tile-bg);
+  border-radius: 16px;
+  padding: 13px 15px;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: .18s ease;
+}
+.option-tile:hover {
+  background: #F0F4FF;
+  border-color: var(--blue);
+}
+
+.option-emoji {
+  font-size: 1.45rem;
+  width: 32px;
+  text-align: center;
+}
+
+.option-label {
+  font-size: .92rem;
+  font-weight: 500;
+  color: #1F2937;
+}
+
+/* SELECTED STATE */
+.option input:checked + .option-tile {
+  background: #E6F0FF;
+  border-color: var(--blue);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+}
+
+/* BUTTON */
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--yellow), #FFD845);
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: .95rem;
+  color: #1F1F1F;
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.14);
+  transition: .2s ease;
+}
+.primary-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 26px;
+  font-size: .75rem;
+  text-align: center;
+  color: var(--muted);
+}
+</style>
+</head>
+
+
+
+<body>
+
+<!-- PROGRESS -->
+<div class="progress">
+  <div class="progress-fill"></div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-icon">🧠</div>
+  <h2>Mood Questionnaire</h2>
+  <p>Please answer the following questions</p>
+</div>
+
+
+<!-- Q1 -->
+<div class="card">
+  <div class="question-title">1. How are you feeling right now?</div>
+
+  <label class="option">
+    <input type="radio" name="q1" value="good">
+    <div class="option-tile">
+      <div class="option-emoji">😀</div>
+      <div class="option-label">I feel good / energized</div>
+    </div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q1" value="okay">
+    <div class="option-tile">
+      <div class="option-emoji">🙂</div>
+      <div class="option-label">I feel okay</div>
+    </div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q1" value="neutral">
+    <div class="option-tile">
+      <div class="option-emoji">😐</div>
+      <div class="option-label">I feel neutral</div>
+    </div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q1" value="sad">
+    <div class="option-tile">
+      <div class="option-emoji">😔</div>
+      <div class="option-label">I feel low / sad</div>
+    </div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q1" value="stressed">
+    <div class="option-tile">
+      <div class="option-emoji">😣</div>
+      <div class="option-label">I feel stressed</div>
+    </div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q1" value="anxious">
+    <div class="option-tile">
+      <div class="option-emoji">😨</div>
+      <div class="option-label">I feel anxious</div>
+    </div>
+  </label>
+</div>
+
+
+<!-- Q2 -->
+<div class="card">
+  <div class="question-title">2. How strong is that feeling?</div>
+
+  <label class="option">
+    <input type="radio" name="q2" value="1">
+    <div class="option-tile"><div class="option-emoji">🌤️</div><div class="option-label">1 (Very Mild)</div></div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q2" value="2">
+    <div class="option-tile"><div class="option-emoji">⛅</div><div class="option-label">2</div></div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q2" value="3">
+    <div class="option-tile"><div class="option-emoji">🌥️</div><div class="option-label">3</div></div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q2" value="4">
+    <div class="option-tile"><div class="option-emoji">🌧️</div><div class="option-label">4</div></div>
+  </label>
+
+  <label class="option">
+    <input type="radio" name="q2" value="5">
+    <div class="option-tile"><div class="option-emoji">⛈️</div><div class="option-label">5 (Very Strong)</div></div>
+  </label>
+</div>
+
+
+<!-- Q3 -->
+<div class="card">
+  <div class="question-title">3. Do you feel mentally ready to start class/work today?</div>
+
+  <label class="option"><input type="radio" name="q3" value="yes"><div class="option-tile"><div class="option-emoji">🚀</div><div class="option-label">Yes, I'm ready</div></div></label>
+  <label class="option"><input type="radio" name="q3" value="somewhat"><div class="option-tile"><div class="option-emoji">🙂</div><div class="option-label">Somewhat ready</div></div></label>
+  <label class="option"><input type="radio" name="q3" value="notsure"><div class="option-tile"><div class="option-emoji">🤔</div><div class="option-label">Not sure</div></div></label>
+  <label class="option"><input type="radio" name="q3" value="no"><div class="option-tile"><div class="option-emoji">😞</div><div class="option-label">No, I’m not ready</div></div></label>
+</div>
+
+
+<!-- Q4 -->
+<div class="card">
+  <div class="question-title">4. What affects your mood today the most?</div>
+
+  <label class="option"><input type="radio" name="q4" value="work"><div class="option-tile"><div class="option-emoji">📚</div><div class="option-label">Work load / assignments</div></div></label>
+  <label class="option"><input type="radio" name="q4" value="personal"><div class="option-tile"><div class="option-emoji">💭</div><div class="option-label">Personal problems</div></div></label>
+  <label class="option"><input type="radio" name="q4" value="rest"><div class="option-tile"><div class="option-emoji">😴</div><div class="option-label">Lack of rest</div></div></label>
+  <label class="option"><input type="radio" name="q4" value="conflict"><div class="option-tile"><div class="option-emoji">⚡</div><div class="option-label">Conflict / misunderstanding</div></div></label>
+  <label class="option"><input type="radio" name="q4" value="health"><div class="option-tile"><div class="option-emoji">🤒</div><div class="option-label">Health issues</div></div></label>
+  <label class="option"><input type="radio" name="q4" value="unsure"><div class="option-tile"><div class="option-emoji">❓</div><div class="option-label">Not sure</div></div></label>
+</div>
+
+
+<!-- Q5 -->
+<div class="card">
+  <div class="question-title">5. Do you feel overwhelmed or need support today?</div>
+
+  <label class="option"><input type="radio" name="q5" value="no"><div class="option-tile"><div class="option-emoji">🙂</div><div class="option-label">No</div></div></label>
+  <label class="option"><input type="radio" name="q5" value="maybe"><div class="option-tile"><div class="option-emoji">🤷‍♂️</div><div class="option-label">Maybe</div></div></label>
+  <label class="option"><input type="radio" name="q5" value="yes"><div class="option-tile"><div class="option-emoji">💛</div><div class="option-label">Yes</div></div></label>
+</div>
+
+
+<!-- BUTTON -->
+<button class="primary-btn" onclick="location.href='readiness-result.html'">
+  Continue
+</button>
+
+</body>
+</html>

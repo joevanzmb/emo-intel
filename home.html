@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMO-INTEL – Home</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --unair-blue: #003A70;
+      --unair-yellow: #F8C300;
+      --bg-soft: #F5F7FA;
+      --white: #FFFFFF;
+      --text-dark: #1F2937;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      min-height: 100vh;
+      background: var(--bg-soft);
+      padding: 0 0 70px; /* space for bottom nav */
+    }
+
+    /* TOP BLUE HEADER */
+    .top-bg {
+      background: linear-gradient(135deg, var(--unair-blue), #4A56E2);
+      padding: 28px 18px 42px;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      color: white;
+      animation: fadeDown .5s ease;
+    }
+
+    .top-bg h2 {
+      font-family: "Poppins";
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .top-bg p {
+      font-size: .92rem;
+      opacity: 0.85;
+    }
+
+    /* STATS SMALL CARDS */
+    .stats-row {
+      display: flex;
+      gap: 12px;
+      padding: 0 18px;
+      margin-top: -26px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 14px 12px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      border: 1px solid #f0f0f0;
+      animation: fadeUp .45s ease;
+    }
+
+    .stat-title {
+      font-size: .75rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-family: "Poppins";
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--unair-blue);
+    }
+
+    /* READINESS CARD */
+    .readiness-card {
+      background: var(--white);
+      padding: 22px 18px;
+      border-radius: 22px;
+      border: 1px solid #eaeaea;
+      margin: 0 18px 26px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.07);
+      animation: fadeUp .5s ease;
+    }
+
+    .readiness-title {
+      font-size: 1.05rem;
+      font-family: "Poppins";
+      font-weight: 700;
+      color: var(--unair-blue);
+      margin-bottom: 6px;
+    }
+
+    .readiness-desc {
+      font-size: .88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .readiness-icon {
+      text-align: center;
+      margin: 16px 0;
+    }
+    .readiness-icon svg {
+      width: 62px;
+      height: 62px;
+      stroke: var(--unair-blue);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .primary-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--unair-yellow), #fbbf24);
+      border: none;
+      border-radius: 999px;
+      color: #1F2933;
+      font-weight: 600;
+      font-size: .95rem;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.15);
+      transition: .15s;
+    }
+    .primary-btn:hover { transform: translateY(-2px); }
+
+    /* QUICK ACCESS */
+    .menu-section {
+      padding: 0 18px;
+    }
+    .menu-title {
+      font-size: 1rem;
+      font-family: "Poppins";
+      font-weight: 700;
+      color: var(--unair-blue);
+      margin-bottom: 14px;
+    }
+
+    .menu-grid {
+      display: flex;
+      gap: 14px;
+    }
+
+    .menu-card {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 16px 12px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: .15s ease;
+      animation: fadeUp .45s ease;
+    }
+    .menu-card:hover { transform: translateY(-3px); }
+
+    .menu-card svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--unair-blue);
+      stroke-width: 2;
+      margin-bottom: 8px;
+      fill: none;
+    }
+
+    .menu-card p {
+      margin-top: 2px;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: .85rem;
+    }
+
+    /* BOTTOM NAVIGATION */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-top: 1px solid #E5E7EB;
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 6px;
+      box-shadow: 0 -3px 20px rgba(0,0,0,0.08);
+      z-index: 999;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      font-size: .75rem;
+      color: #6B7280;
+      transition: .15s ease;
+    }
+    .nav-item:hover { transform: translateY(-2px); }
+
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      stroke: #6B7280;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .nav-item.active span {
+      color: var(--unair-blue);
+      font-weight: 700;
+    }
+    .nav-item.active .nav-icon {
+      stroke: var(--unair-blue);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BLUE HEADER -->
+  <div class="top-bg">
+    <h2>Hello, Joevanz 👋</h2>
+    <p>Your emotional readiness matters. Let's begin your day.</p>
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-title">This Week</div>
+      <div class="stat-value">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-title">Readiness Avg</div>
+      <div class="stat-value">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-title">Check-ins</div>
+      <div class="stat-value">0/7</div>
+    </div>
+  </div>
+
+  <!-- READINESS CARD -->
+  <div class="readiness-card">
+    <div class="readiness-title">Today's Readiness</div>
+    <div class="readiness-desc">You haven’t completed your mood assessment yet.</div>
+
+    <div class="readiness-icon">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 15c1.2-1 2.8-1 4 0s2.8 1 4 0" />
+        <circle cx="9" cy="10" r="1.3" />
+        <circle cx="15" cy="10" r="1.3" />
+      </svg>
+    </div>
+
+    <button class="primary-btn" onclick="location.href='mood-method.html'">
+      Start Mood Check
+    </button>
+  </div>
+
+  <!-- QUICK ACCESS -->
+  <div class="menu-section">
+    <div class="menu-title">Quick Access</div>
+
+    <div class="menu-grid">
+
+      <div class="menu-card" onclick="location.href='suggested-intervention.html'">
+        <svg viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></svg>
+        <p>Interventions</p>
+      </div>
+
+      <div class="menu-card" onclick="location.href='mood-history.html'">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 20a8 8 0 1 0-8-8" />
+          <path d="M12 6v6l3 1.5" />
+        </svg>
+        <p>Mood History</p>
+      </div>
+
+      <div class="menu-card" onclick="location.href='emotional-insights.html'">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 18h16M4 12h10M4 6h6" />
+        </svg>
+        <p>Insights</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <div class="nav-item active" onclick="location.href='home.html'">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 12l9-8 9 8v9H3z"/></svg>
+      <span>Home</span>
+    </div>
+
+    <div class="nav-item" onclick="location.href='mood-method.html'">
+      <svg class="nav-icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2"/>
+      </svg>
+      <span>Check</span>
+    </div>
+
+    <div class="nav-item" onclick="location.href='suggested-intervention.html'">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></svg>
+      <span>Interventions</span>
+    </div>
+
+    <div class="nav-item" onclick="location.href='emotional-insights.html'">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 18h16M4 12h10M4 6h6"/></svg>
+      <span>Insights</span>
+    </div>
+
+    <div class="nav-item" onclick="location.href='profile.html'">
+      <svg class="nav-icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M5.5 21a6.5 6.5 0 0 1 13 0"/>
+      </svg>
+      <span>Profile</span>
+    </div>
+  </div>
+
+</body>
+</html>

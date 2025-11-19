@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMO-INTEL – Mood Slider</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --unair-blue: #003A70;
+      --unair-yellow: #F8C300;
+      --bg-soft: #F5F7FA;
+      --white: #fff;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+
+      /* Mood colors */
+      --very-bad: #d9534f;
+      --bad: #f0ad4e;
+      --neutral: #f7e463;
+      --good: #5bc0de;
+      --very-good: #5cb85c;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg-soft);
+      padding: 22px 18px 28px;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 26px;
+      animation: fadeIn .6s ease;
+    }
+    .header h2 {
+      font-family: "Poppins";
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--unair-blue);
+    }
+    .header p {
+      margin-top: 6px;
+      font-size: .9rem;
+      color: var(--text-muted);
+      animation: fadeIn .8s ease;
+    }
+
+    /* Mood Display */
+    .mood-display {
+      text-align: center;
+      margin: 28px 0 20px;
+      transition: .3s ease;
+    }
+
+    .mood-icon {
+      font-size: 66px;
+      margin-bottom: 4px;
+      transform: scale(1);
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .mood-text {
+      font-size: 1.22rem;
+      font-family: "Poppins";
+      font-weight: 600;
+      color: var(--unair-blue);
+      transition: .25s ease;
+    }
+
+    /* Slider Card */
+    .slider-card {
+      background: var(--white);
+      padding: 24px 20px 34px;
+      border-radius: 26px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+      animation: fadeUp .45s ease;
+    }
+
+    .slider-title {
+      text-align: center;
+      font-family: "Poppins";
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--unair-blue);
+      margin-bottom: 20px;
+    }
+
+    /* Slider */
+    .slider {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--neutral);
+      outline: none;
+      transition: background .35s ease, box-shadow .35s ease;
+    }
+
+    .slider:active {
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 32px;
+      height: 32px;
+      background: var(--unair-blue);
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+      transition: transform .25s ease;
+    }
+
+    .slider::-webkit-slider-thumb:active {
+      transform: scale(1.12);
+    }
+
+    /* Button */
+    .primary-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 28px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--unair-yellow), #fbbf24);
+      font-size: .96rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #1F2933;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      transition: transform .2s ease;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 26px;
+      text-align: center;
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h2>Mood Slider</h2>
+    <p>Slide smoothly to reflect your current emotion</p>
+  </div>
+
+  <!-- Mood Display -->
+  <div class="mood-display">
+    <div id="moodIcon" class="mood-icon">😐</div>
+    <div id="moodText" class="mood-text">Neutral</div>
+  </div>
+
+  <!-- Slider Card -->
+  <div class="slider-card">
+    <div class="slider-title">How are you feeling right now?</div>
+
+    <input id="moodSlider" type="range" min="1" max="5" value="3" class="slider">
+  </div>
+
+  <button class="primary-btn" onclick="location.href='readiness-result.html'">
+    Continue
+  </button>
+
+
+  <script>
+    const slider = document.getElementById("moodSlider");
+    const moodIcon = document.getElementById("moodIcon");
+    const moodText = document.getElementById("moodText");
+
+    function updateMood(val) {
+      let icon = "😐";
+      let text = "Neutral";
+      let color = "var(--neutral)";
+
+      if (val == 1) { icon = "😞"; text = "Very Bad"; color = "var(--very-bad)"; }
+      if (val == 2) { icon = "☹️"; text = "Bad"; color = "var(--bad)"; }
+      if (val == 3) { icon = "😐"; text = "Neutral"; color = "var(--neutral)"; }
+      if (val == 4) { icon = "🙂"; text = "Good"; color = "var(--good)"; }
+      if (val == 5) { icon = "😁"; text = "Very Good"; color = "var(--very-good)"; }
+
+      // Smooth animations
+      moodIcon.style.opacity = "0";
+      moodIcon.style.transform = "scale(0.85)";
+
+      setTimeout(() => {
+        moodIcon.textContent = icon;
+        moodIcon.style.opacity = "1";
+        moodIcon.style.transform = "scale(1)";
+      }, 150);
+
+      moodText.textContent = text;
+      slider.style.background = color;
+    }
+
+    slider.addEventListener("input", function() {
+      updateMood(this.value);
+    });
+
+    updateMood(3);
+  </script>
+
+</body>
+</html>

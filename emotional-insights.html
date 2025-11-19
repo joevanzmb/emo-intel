@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMO-INTEL – Emotional Insights</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --unair-blue: #003A70;
+      --unair-blue-soft: #4A56E2;
+      --unair-yellow: #FFC300;
+      --bg-soft: #F4F6FA;
+      --white: #FFFFFF;
+      --border: #E5E7EB;
+      --text-muted: #6B7280;
+      --text-dark: #1F2937;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-soft);
+      font-family: "Inter", sans-serif;
+      min-height: 100vh;
+      padding-bottom: 120px; /* Safe for bottom nav */
+    }
+
+    /* HEADER GRADIENT */
+    .header-gradient {
+      background: linear-gradient(145deg, var(--unair-blue), var(--unair-blue-soft));
+      padding: 40px 18px 58px;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      color: white;
+      text-align: center;
+      animation: fadeDown .6s ease;
+    }
+
+    .header-gradient h2 {
+      font-family: "Poppins";
+      font-size: 1.55rem;
+      font-weight: 700;
+    }
+
+    .header-gradient p {
+      opacity: 0.85;
+      margin-top: 6px;
+      font-size: .93rem;
+    }
+
+    .content {
+      padding: 0 18px;
+      margin-top: -26px;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 22px 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+      margin-bottom: 22px;
+      animation: fadeUp .45s ease;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: "Poppins";
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--unair-blue);
+      margin-bottom: 10px;
+    }
+
+    /* DONUT CHART MOCK */
+    .donut-box {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #4A56E2 0deg 120deg,
+        #FFC300 120deg 210deg,
+        #FF6B6B 210deg 330deg,
+        #D1D5DB 330deg 360deg
+      );
+      margin: 10px auto 12px;
+      position: relative;
+    }
+
+    .donut-inner {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins";
+      font-weight: 700;
+      color: var(--unair-blue);
+      font-size: .95rem;
+    }
+
+    /* BAR CHART */
+    .bar-wrap {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+
+    .bar-col {
+      text-align: center;
+      width: 18%;
+    }
+
+    .bar {
+      width: 100%;
+      border-radius: 6px 6px 0 0;
+      transition: .3s ease;
+    }
+
+    .bar-label {
+      margin-top: 4px;
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    /* WEEK HEAT CHECK */
+    .heat-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding: 0 10px;
+    }
+
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #D1D5DB;
+    }
+
+    .dot.level1 { background: #9CA3AF; }
+    .dot.level2 { background: #FFC300; }
+    .dot.level3 { background: #F59E0B; }
+    .dot.level4 { background: #EF4444; }
+
+    /* INSIGHT TEXT */
+    .insight-text {
+      font-size: .9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+
+    /* AI SUMMARY */
+    .ai-summary {
+      background: #FFFBEA;
+      border: 1px solid #FCD34D;
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-top: 12px;
+      color: #92400E;
+      font-size: .88rem;
+      line-height: 1.45;
+    }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #E5E7EB;
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 6px;
+      box-shadow: 0 -3px 20px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: .75rem;
+      color: #6B7280;
+      cursor: pointer;
+    }
+
+    .nav-item svg {
+      width: 24px;
+      height: 24px;
+      stroke: #6B7280;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .nav-item.active span,
+    .nav-item.active svg {
+      color: var(--unair-blue);
+      stroke: var(--unair-blue);
+      font-weight: 700;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(16px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeDown {
+      from {opacity: 0; transform: translateY(-16px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="header-gradient">
+    <h2>Emotional Insights</h2>
+    <p>Your mood patterns and AI-driven analysis</p>
+  </div>
+
+  <div class="content">
+
+    <!-- DONUT CHART -->
+    <div class="card">
+      <div class="section-title">Weekly Mood Ratio</div>
+
+      <div class="donut-box">
+        <div class="donut-inner">54%</div>
+      </div>
+
+      <div class="insight-text">
+        Most of your moods this week lean toward <b>positive/neutral</b>, with occasional dips linked to workload stress.
+      </div>
+
+      <div class="ai-summary">
+        <b>AI Observation:</b> You're showing good emotional resilience. The slight drop on Wednesday & Friday is likely due to task accumulation.
+      </div>
+    </div>
+
+    <!-- BAR CHART -->
+    <div class="card">
+      <div class="section-title">Emotion Intensity – Past Week</div>
+
+      <div class="bar-wrap">
+        <div class="bar-col">
+          <div class="bar" style="height: 80px; background:#4A56E2;"></div>
+          <div class="bar-label">Happy</div>
+        </div>
+
+        <div class="bar-col">
+          <div class="bar" style="height: 55px; background:#003A70;"></div>
+          <div class="bar-label">Neutral</div>
+        </div>
+
+        <div class="bar-col">
+          <div class="bar" style="height: 70px; background:#FF6B6B;"></div>
+          <div class="bar-label">Sad</div>
+        </div>
+
+        <div class="bar-col">
+          <div class="bar" style="height: 50px; background:#F59E0B;"></div>
+          <div class="bar-label">Stress</div>
+        </div>
+
+        <div class="bar-col">
+          <div class="bar" style="height: 40px; background:#1E3A8A;"></div>
+          <div class="bar-label">Anxiety</div>
+        </div>
+      </div>
+
+      <div class="insight-text">
+        Stress increases toward the mid-week, suggesting workload strain. Anxiety peaks lightly before deadlines.
+      </div>
+    </div>
+
+    <!-- HEAT MAP -->
+    <div class="card">
+      <div class="section-title">Daily Mood Stability</div>
+
+      <div class="heat-row">
+        <div class="dot level2"></div>
+        <div class="dot level3"></div>
+        <div class="dot level1"></div>
+        <div class="dot level2"></div>
+        <div class="dot level4"></div>
+        <div class="dot level2"></div>
+        <div class="dot level1"></div>
+      </div>
+
+      <div class="insight-text">
+        Thursday shows the biggest dip. Monday and Sunday have the highest stability.
+      </div>
+    </div>
+
+    <!-- TRIGGERS -->
+    <div class="card">
+      <div class="section-title">Trigger Patterns</div>
+
+      <div class="stat-box">
+        <span class="text-muted">Most impactful trigger:</span>
+        <span class="stat-value">Workload</span>
+      </div>
+
+      <div class="stat-box">
+        <span class="text-muted">Secondary trigger:</span>
+        <span class="stat-value">Lack of rest</span>
+      </div>
+
+      <div class="stat-box">
+        <span class="text-muted">Low influence:</span>
+        <span class="stat-value">Personal conflicts</span>
+      </div>
+
+      <div class="ai-summary" style="margin-top:14px;">
+        <b>AI Insight:</b> Workload pressure is the biggest driver of emotional fluctuation. 
+        Consider micro-breaks or rebalancing tasks to prevent mid-week burnout.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <div class="nav-item" onclick="location.href='home.html'">
+      <svg viewBox="0 0 24 24"><path d="M3 12l9-8 9 8v9H3z"/></svg>
+      <span>Home</span>
+    </div>
+
+    <div class="nav-item" onclick="location.href='mood-method.html'">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2"/></svg>
+      <span>Check</span>
+    </div>
+
+    <div class="nav-item" onclick="location.href='suggested-intervention.html'">
+      <svg viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></svg>
+      <span>Interventions</span>
+    </div>
+
+    <div class="nav-item active" onclick="location.href='emotional-insights.html'">
+      <svg viewBox="0 0 24 24"><path d="M4 18h16M4 12h10M4 6h6"/></svg>
+      <span>Insights</span>
+    </div>
+
+    <div class="nav-item" onclick="location.href='profile.html'">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg>
+      <span>Profile</span>
+    </div>
+  </div>
+
+</body>
+</html>

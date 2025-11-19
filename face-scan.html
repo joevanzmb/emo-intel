@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMO-INTEL – Face Scan</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --unair-blue: #003A70;
+      --unair-blue-soft: #4A56E2;
+      --unair-yellow: #F8C300;
+      --bg-soft: #F5F7FA;
+      --white: #FFFFFF;
+      --text-dark: #1F2937;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg-soft);
+      min-height: 100vh;
+    }
+
+    /* TOP SECTION */
+    .top-section {
+      background: linear-gradient(145deg, var(--unair-blue), var(--unair-blue-soft));
+      padding: 34px 20px 52px;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      color: var(--white);
+      text-align: center;
+      animation: fadeDown .5s ease;
+    }
+
+    .top-section h2 {
+      font-family: "Poppins";
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .top-section p {
+      font-size: .92rem;
+      opacity: 0.85;
+    }
+
+    /* CAMERA FRAME */
+    .camera-wrapper {
+      padding: 0 20px;
+      margin-top: -38px;
+      animation: fadeUp .5s ease;
+    }
+
+    .camera-container {
+      width: 100%;
+      height: 360px;
+      background: #E8EBF2;
+      border-radius: 26px;
+      position: relative;
+      border: 2px solid rgba(255,255,255,0.5);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 0 22px rgba(0,0,0,0.08);
+    }
+
+    /* SCAN RING EFFECT */
+    .scan-ring {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 3px solid rgba(0,58,112,0.3);
+      animation: pulse 1.8s infinite ease-in-out;
+      position: absolute;
+    }
+
+    .camera-placeholder svg {
+      width: 80px;
+      height: 80px;
+      stroke: #003A70;
+      stroke-width: 1.8;
+      opacity: 0.7;
+      fill: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: .45; }
+      50% { transform: scale(1.12); opacity: .25; }
+      100% { transform: scale(1); opacity: .45; }
+    }
+
+    /* INSTRUCTION CARD */
+    .instruction-card {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 22px 20px;
+      margin: 26px 20px 30px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+    }
+
+    .instruction-card h3 {
+      font-family: "Poppins";
+      font-size: 1.05rem;
+      color: var(--unair-blue);
+      margin-bottom: 12px;
+    }
+
+    .instruction-card ul {
+      padding-left: 18px;
+      font-size: .88rem;
+      color: var(--text-muted);
+      line-height: 1.58;
+    }
+
+    .instruction-card li { margin-bottom: 6px; }
+
+    /* BUTTON */
+    .primary-btn {
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      display: block;
+      padding: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--unair-yellow), #FBBF24);
+      border: none;
+      color: #1F2933;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.15);
+      transition: .15s ease;
+    }
+
+    .primary-btn:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      margin: 24px 0;
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    /* Animations */
+    @keyframes fadeUp { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeDown { from {opacity:0; transform: translateY(-20px);} to {opacity:1; transform:translateY(0);} }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER SECTION -->
+  <div class="top-section">
+    <h2>Face Scan</h2>
+    <p>Use your device camera to analyze your emotional expression</p>
+  </div>
+
+  <!-- CAMERA -->
+  <div class="camera-wrapper">
+    <div class="camera-container">
+      <div class="scan-ring"></div>
+
+      <div class="camera-placeholder">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="3"></circle>
+          <path d="M5 20c1.5-5 4-8 7-8s5.5 3 7 8"></path>
+          <rect x="2.5" y="4" width="19" height="16" rx="3" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="instruction-card">
+    <h3>Before You Start</h3>
+    <ul>
+      <li>Ensure your face is fully visible in the frame.</li>
+      <li>Avoid low lighting or strong backlight.</li>
+      <li>Hold your device steady for better accuracy.</li>
+      <li>A neutral expression improves baseline detection.</li>
+    </ul>
+  </div>
+
+  <!-- BUTTON -->
+  <button class="primary-btn" onclick="location.href='face-scan-processing.html'"
+>
+    Start Face Scan
+  </button>
+
+</body>
+</html>
