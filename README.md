@@ -81,11 +81,40 @@ Technologies Used
 4. Google Fonts
 5. Mobile-first responsive design
 
-Screenshoots
+Screenshots
 <p align="center">
-  <img src="assets/screenshot-home.png" width="260">
-  <img src="assets/screenshot-scan.png" width="260">
-  <img src="assets/screenshot-insights.png" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0001.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0002.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0003.jpg" width="260">
+</p>
+
+<p align="center">
+  <img src="assets/ilovepdf_merged (1)_page-0004.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0005.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0006.jpg" width="260">
+</p>
+
+<p align="center">
+  <img src="assets/ilovepdf_merged (1)_page-0007.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0008.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0009.jpg" width="260">
+</p>
+
+<p align="center">
+  <img src="assets/ilovepdf_merged (1)_page-0010.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0011.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0012.jpg" width="260">
+</p>
+
+<p align="center">
+  <img src="assets/ilovepdf_merged (1)_page-0013.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0014.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0015.jpg" width="260">
+</p>
+
+<p align="center">
+  <img src="assets/ilovepdf_merged (1)_page-0016.jpg" width="260">
+  <img src="assets/ilovepdf_merged (1)_page-0017.jpg" width="260">
 </p>
 
 
